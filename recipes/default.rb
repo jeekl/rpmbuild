@@ -40,6 +40,8 @@ when "centos", "redhat", "fedora"
     home "#{node[:rpmbuild][:home_dir]}"
   end
 
+  group node[:rpmbuild][:user]
+
   %w[SRPMS SPECS RPMS/i386 RPMS/x86_64 BUILD SOURCES].each do |dir|
     directory "#{node[:rpmbuild][:build_dir]}/#{dir}" do 
       owner node[:rpmbuild][:user]
